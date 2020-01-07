@@ -20,23 +20,23 @@ db.sync({ force: true })
       }),
       // USER
       Users.create({
-        fullName: "Bram Richards",
+        username: "BramRichards",
         password: "$2b$10$JZ5ItMKfLxlFbTUu9d.bA.Evar83Esj7gXXKcJ5RJhto9Epgt9bQe" //bram
       }),
       Users.create({
-        fullName: "Mel Evans",
+        username: "MelEvans",
         password: "$2b$10$VtM.I0WO2LbDTbbAHvMavu6IL4AmoOyojXf6gjnjsSB3THQ8qYH2q" //mel
       }),
       Users.create({
-        fullName: "Amber Rodriguez",
+        username: "AmberRodriguez",
         password: "$2b$10$Eu2AyBWuFSf.uYH3nj4yfePj8e.rHfGYWHRbOa5EBJgkvbK4lPQG2" //am
       }),
       Users.create({
-        fullName: "Chris Lewis",
+        username: "ChrisLewis",
         password: "$2b$10$NSU6xf5Z3PyYW9lG4f6gAOx1jHuhi5KEt3gjygjgsxI1XE8r0aeaO" //c
       }),
       Users.create({
-        fullName: "Christopher Miller",
+        username: "ChristopherMiller",
         password: "$2b$10$NSU6xf5Z3PyYW9lG4f6gAOx1jHuhi5KEt3gjygjgsxI1XE8r0aeaO" //c
       })
     ])
