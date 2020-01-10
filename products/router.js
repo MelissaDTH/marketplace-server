@@ -97,20 +97,17 @@ async function calculateproductRisk(product) {
 //     .catch(next);
 // });
 
-router.get('/category/:id/products/', (req, res, next) => {
-  Products.findByPk(req.params.id, { include: [Categories, Comments] })
-    .then(async product => {
-      if (!product) {
-        return res.status(404).send({
-          message: "This product is not found"
-        });
-      } else {
-        // productRISK FUNCTION: want to add something to the data object then it must be in product.dataValues, so adding risk to it
-        // product.dataValues.risk = await calculateproductRisk(product);
-        res.status(200).send(product);
-      }
-    })
-    .catch(err => next(err));
+router.get("/category/:categoryId/products/", async (req, res, next) => {
+  try {
+    const products = await Products.findAll({
+      where: { categoryId: req.params.categoryId },
+      order: [["id", "DESC"]],
+      include: [Comments]
+    });
+    res.status(200).send(products);
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = router;

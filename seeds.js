@@ -89,6 +89,16 @@ db.sync({ force: true })
         categoryId: 1
       }),
       Products.create({
+        name: "Lamp",
+        picture:
+          "https://picsum.photos/536/354",
+          price: 54,
+        description: "Product text lamp",
+        color: 'black',
+        userId: 2,
+        categoryId: 1
+      }),
+      Products.create({
         name: "Succulent",
         picture:
           "https://picsum.photos/536/354",
@@ -97,7 +107,18 @@ db.sync({ force: true })
         color: 'green',
         userId: 3,
         categoryId: 2
+      }),
+      Products.create({
+        name: "Pot",
+        picture:
+          "https://picsum.photos/536/354",
+          price: 10,
+        description: "Product text of the pot",
+        color: 'yellow',
+        userId: 5,
+        categoryId: 2
       })
+
     ])
   )
   .then(() => console.log("--- Database is seeded ---"))
