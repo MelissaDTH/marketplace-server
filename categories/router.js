@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const Categories = require("./model");
 // const authentication = require("../authentication/middleware");
-const Products = require("../products/model")
+const Products = require("../products/model");
 
 const router = new Router();
 
@@ -19,19 +19,21 @@ router.post("/category", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/category/:id", (req, res, next) => {
-  Categories.findByPk(req.params.id, { include: [Products]})
-  .then(category => {
-    if (!category) {
-      return res.status(404).send({
-        message: "This category is not found"
-      });
-    } else {
-      res.status(200).send(category);
-    }
+router.get("/category/:categoryId", (req, res, next) => {
+  Categories.findByPk({ order: [["id", "ASC"]] }, req.params.id, {
+    include: [Products]
   })
+    .then(category => {
+      if (!category) {
+        return res.status(404).send({
+          message: "This category is not found"
+        });
+      } else {
+        res.status(200).send(category);
+      }
+    })
 
-  .catch(err => next(err));
+    .catch(err => next(err));
 });
 
 module.exports = router;

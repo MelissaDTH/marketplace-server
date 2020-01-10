@@ -80,13 +80,13 @@ async function calculateproductRisk(product) {
   return risk;
 }
 
-router.get("/category/:id/products/", (_req, res, next) => {
-  Products.findAll()
-    .then(products => {
-      res.send(products);
-    })
-    .catch(next);
-});
+// router.get("/category/:id/products", (_req, res, next) => {
+//   Products.findAll()
+//     .then(products => {
+//       res.send(products);
+//     })
+//     .catch(next);
+// });
 
 // Deconstructing from the request body to use it to create product + can use userId here because of auth
 // router.post('/category/:id/products', (req, res, next) => {
@@ -97,7 +97,7 @@ router.get("/category/:id/products/", (_req, res, next) => {
 //     .catch(next);
 // });
 
-router.get('/category/:id/products/:id', (req, res, next) => {
+router.get('/category/:id/products/', (req, res, next) => {
   Products.findByPk(req.params.id, { include: [Categories, Comments] })
     .then(async product => {
       if (!product) {
@@ -111,20 +111,6 @@ router.get('/category/:id/products/:id', (req, res, next) => {
       }
     })
     .catch(err => next(err));
-});
-
-router.put("/products/:id", (req, res, next) => {
-  //  const { userId } = req;
-  Products.findByPk(req.params.id)
-    .then(product => {
-      console.log("product FOUND?", product);
-      if (product) {
-        product.update(req.body).then(product => res.json(product));
-      } else {
-        res.status(404).end();
-      }
-    })
-    .catch(next);
 });
 
 module.exports = router;
