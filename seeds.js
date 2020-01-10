@@ -99,14 +99,34 @@ db.sync({ force: true })
         categoryId: 1
       }),
       Products.create({
+        name: "iPhone",
+        picture:
+          "https://picsum.photos/536/354",
+          price: 850,
+        description: "Product text iphone",
+        color: 'grey',
+        userId: 3,
+        categoryId: 2
+      }),
+      Products.create({
+        name: "VR headset",
+        picture:
+          "https://picsum.photos/536/354",
+          price: 850,
+        description: "Product text of PSVR",
+        color: 'white',
+        userId: 2,
+        categoryId: 2
+      }),
+      Products.create({
         name: "Succulent",
         picture:
           "https://picsum.photos/536/354",
           price: 15,
-        description: "Product text",
+        description: "Product text plants",
         color: 'green',
-        userId: 3,
-        categoryId: 2
+        userId: 5,
+        categoryId: 3
       }),
       Products.create({
         name: "Pot",
@@ -115,8 +135,8 @@ db.sync({ force: true })
           price: 10,
         description: "Product text of the pot",
         color: 'yellow',
-        userId: 5,
-        categoryId: 2
+        userId: 4,
+        categoryId: 3
       })
 
     ])
