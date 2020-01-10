@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const Products = require("./model");
-const authentication = require("../authentication/middleware");
+// const authentication = require("../authentication/middleware");
 const Categories = require("../categories/model");
 const Comments = require("../comments/model");
 const Sequelize = require("sequelize");
@@ -80,7 +80,7 @@ async function calculateproductRisk(product) {
   return risk;
 }
 
-router.get("/products", (_req, res, next) => {
+router.get("/category/:id/products/", (_req, res, next) => {
   Products.findAll()
     .then(products => {
       res.send(products);
@@ -89,15 +89,15 @@ router.get("/products", (_req, res, next) => {
 });
 
 // Deconstructing from the request body to use it to create product + can use userId here because of auth
-router.post("/products", authentication, (req, res, next) => {
-  const { name, author, picture, price, description, eventId } = req.body;
-  const userId = req.user.id;
-  Products.create({ name, author, picture, price, description, userId, eventId })
-    .then(product => res.json(product))
-    .catch(next);
-});
+// router.post('/category/:id/products', (req, res, next) => {
+//   const { name, author, picture, price, description, eventId } = req.body;
+//   const userId = req.user.id;
+//   Products.create({ name, author, picture, price, description, userId, eventId })
+//     .then(product => res.json(product))
+//     .catch(next);
+// });
 
-router.get("/products/:id", (req, res, next) => {
+router.get('/category/:id/products/:id', (req, res, next) => {
   Products.findByPk(req.params.id, { include: [Categories, Comments] })
     .then(async product => {
       if (!product) {
@@ -106,7 +106,7 @@ router.get("/products/:id", (req, res, next) => {
         });
       } else {
         // productRISK FUNCTION: want to add something to the data object then it must be in product.dataValues, so adding risk to it
-        product.dataValues.risk = await calculateproductRisk(product);
+        // product.dataValues.risk = await calculateproductRisk(product);
         res.status(200).send(product);
       }
     })

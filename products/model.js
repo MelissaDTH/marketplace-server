@@ -6,10 +6,6 @@ const Products = db.define('products', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  seller: {
-    type: Sequelize.TEXT,
-    allowNull: false
-  },
   picture: {
     type: Sequelize.TEXT,
   },
