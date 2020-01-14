@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const Comments = require("./model");
+const Products = require("../products/model");
 const authentication = require("../authentication/middleware");
 
 const router = new Router();
@@ -34,12 +35,20 @@ router.post("/comments", authentication, async (request, response, next) => {
 });
 
 
-router.post("/products/:productId/comments", authentication, (request, response, next) => {
-  const { comment, ticketId } = request.body;
-  const userId = request.user.id;
-  Comments.create({ comment, ticketId, userId })
-    .then(ticket => response.json(ticket))
-    .catch(next);
-});
+router.get(
+  "/products/:productId/comments/",
+  async (request, response, next) => {
+    try {
+      const comments = await Comments.findAll({
+        where: { productId: request.params.productId },
+        order: [["id", "DESC"]],
+        include: [Products]
+      });
+      response.status(200).send(comments);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 module.exports = router;

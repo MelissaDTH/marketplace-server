@@ -167,8 +167,22 @@ db.sync({ force: true })
         color: 'orange',
         userId: 4,
         categoryId: 3
+      }),
+      Comments.create({
+        comment: "Why do I have to put a comment at a product I haven't bought? This is me talking about pillows.",
+        productId: 1,
+        userId: 1,
+      }),
+      Comments.create({
+        comment: "These pillows look great, I am definitely interested in at least 3 x 3 of them! ",
+        productId: 1,
+        userId: 3,
+      }),
+      Comments.create({
+        comment: "This is me talking about product 2, the white base lamp",
+        productId: 2,
+        userId: 5,
       })
-
     ])
   )
   .then(() => console.log("--- Database is seeded ---"))

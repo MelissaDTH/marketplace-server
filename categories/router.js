@@ -5,7 +5,7 @@ const Products = require("../products/model");
 
 const router = new Router();
 
-router.get("/category", (request, response, next) => {
+router.get("/category", (_request, response, next) => {
   Categories.findAll()
     .then(Categories => {
       response.send(Categories);

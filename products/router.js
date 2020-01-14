@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const Products = require("./model");
 // const authentication = require("../authentication/middleware");
-const Categories = require("../categories/model");
+// const Categories = require("../categories/model");
 const Comments = require("../comments/model");
 const Sequelize = require("sequelize");
 
@@ -80,26 +80,29 @@ async function calculateproductRisk(product) {
   return risk;
 }
 
-router.get("/products", async (request, response, next) => {
-  try {
-    const product = await Products.findAll({
-      order: [["id", "DESC"]],
-      include: [{ model: User }, { model: Comment }]
-    });
-    response.send(product);
-  } catch (error) {
-    next(error);
+router.get(
+  "/category/:categoryId/products/",
+  async (request, response, next) => {
+    try {
+      const products = await Products.findAll({
+        where: { categoryId: request.params.categoryId },
+        order: [["id", "DESC"]],
+        include: [Comments]
+      });
+      response.status(200).send(products);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
-router.get("/category/:categoryId/products/", async (request, response, next) => {
+router.get("/products/:productId", async (request, response, next) => {
   try {
-    const products = await Products.findAll({
-      where: { categoryId: request.params.categoryId },
-      order: [["id", "DESC"]],
+    const product = await Products.findOne({
+      where: { id: request.params.productId },
       include: [Comments]
     });
-    response.status(200).send(products);
+    response.send(product);
   } catch (error) {
     next(error);
   }
