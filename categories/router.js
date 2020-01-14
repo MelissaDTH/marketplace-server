@@ -5,31 +5,31 @@ const Products = require("../products/model");
 
 const router = new Router();
 
-router.get("/category", (_req, res, next) => {
+router.get("/category", (request, response, next) => {
   Categories.findAll()
     .then(Categories => {
-      res.send(Categories);
+      response.send(Categories);
     })
     .catch(next);
 });
 
-router.post("/category", (req, res, next) => {
-  Categories.create(req.body)
-    .then(category => res.json(category))
+router.post("/category", (request, response, next) => {
+  Categories.create(request.body)
+    .then(category => response.json(category))
     .catch(next);
 });
 
-router.get("/category/:categoryId", (req, res, next) => {
-  Categories.findByPk({ order: [["id", "ASC"]] }, req.params.id, {
+router.get("/category/:categoryId", (request, response, next) => {
+  Categories.findByPk({ order: [["id", "ASC"]] }, request.params.id, {
     include: [Products]
   })
     .then(category => {
       if (!category) {
-        return res.status(404).send({
+        return response.status(404).send({
           message: "This category is not found"
         });
       } else {
-        res.status(200).send(category);
+        response.status(200).send(category);
       }
     })
 

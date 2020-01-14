@@ -79,27 +79,27 @@ db.sync({ force: true })
       }),
       // PRODUCTS
       Products.create({
-        name: "Brown Wooden Dinner Table with Ceramic Plate",
+        name: "Three Pillows with Good Quality Wool",
         picture:
-          "https://images.pexels.com/photos/154161/pexels-photo-154161.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-          price: 399,
-        description: "Selling a nearly perfect table with a ceramic plate, I put a bowl with lettuce on it just for show. Not selling this plate!",
-        color: 'brown',
-        userId: 1,
+          "https://images.pexels.com/photos/298842/pexels-photo-298842.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          price: 35,
+        description: "Selling three great pillows because they are not compatible with the rest of the house anymore. It was styled by free by an tv-stylist, but we didn't like it so it all has to go.",
+        color: 'black, orange and blue',
+        userId: 5,
         categoryId: 1
       }),
       Products.create({
-        name: "White Lamp with black Lamp Base",
+        name: "White Lamp with a Lamp Base",
         picture:
-          "https://images.pexels.com/photos/707579/pexels-photo-707579.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          "https://images.pexels.com/photos/545048/pexels-photo-545048.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
           price: 54,
         description: "A white lamp that has to go because we have bought new black lamps. This does not fit our interior anymore, they are almost new and have been use scarcely.",
-        color: 'black',
+        color: 'white',
         userId: 2,
         categoryId: 1
       }),
       Products.create({
-        name: "New Silver iPhone X With Airpods",
+        name: "New Silver iPhone X ",
         picture:
           "https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
           price: 850,
@@ -109,7 +109,7 @@ db.sync({ force: true })
         categoryId: 2
       }),
       Products.create({
-        name: "PSVR (Playstation Virtual Reality) Headset",
+        name: "PSVR (Playstation) Headset",
         picture:
           "https://images.pexels.com/photos/3391378/pexels-photo-3391378.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
           price: 250,
@@ -129,7 +129,7 @@ db.sync({ force: true })
         categoryId: 2
       }),
       Products.create({
-        name: "Sony PSP Playstation Handheld",
+        name: "Sony PSP Handheld",
         picture:
           "https://images.pexels.com/photos/1435595/pexels-photo-1435595.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
           price: 350,
@@ -139,7 +139,7 @@ db.sync({ force: true })
         categoryId: 2
       }),
       Products.create({
-        name: "Two Playstation 4 Dualshock Controllers",
+        name: "PS4 Dualshock Controllers",
         picture:
           "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
           price: 250,
@@ -161,9 +161,9 @@ db.sync({ force: true })
       Products.create({
         name: "Orange 25 cm Indoor Plant Pot",
         picture:
-          "https://images.pexels.com/photos/1533960/pexels-photo-1533960.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          "https://images.pexels.com/photos/793012/pexels-photo-793012.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
           price: 10,
-        description: "A new pot for small sized plants. Has never been used, this purchase will be without the plant.",
+        description: "A pot for small sized plants. It's the first one on the left. Has never been used, this purchase will be without the plant.",
         color: 'orange',
         userId: 4,
         categoryId: 3

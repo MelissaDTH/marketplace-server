@@ -80,31 +80,26 @@ async function calculateproductRisk(product) {
   return risk;
 }
 
-// router.get("/category/:id/products", (_req, res, next) => {
-//   Products.findAll()
-//     .then(products => {
-//       res.send(products);
-//     })
-//     .catch(next);
-// });
+router.get("/products", async (request, response, next) => {
+  try {
+    const product = await Products.findAll({
+      order: [["id", "DESC"]],
+      include: [{ model: User }, { model: Comment }]
+    });
+    response.send(product);
+  } catch (error) {
+    next(error);
+  }
+});
 
-// Deconstructing from the request body to use it to create product + can use userId here because of auth
-// router.post('/category/:id/products', (req, res, next) => {
-//   const { name, author, picture, price, description, eventId } = req.body;
-//   const userId = req.user.id;
-//   Products.create({ name, author, picture, price, description, userId, eventId })
-//     .then(product => res.json(product))
-//     .catch(next);
-// });
-
-router.get("/category/:categoryId/products/", async (req, res, next) => {
+router.get("/category/:categoryId/products/", async (request, response, next) => {
   try {
     const products = await Products.findAll({
-      where: { categoryId: req.params.categoryId },
+      where: { categoryId: request.params.categoryId },
       order: [["id", "DESC"]],
       include: [Comments]
     });
-    res.status(200).send(products);
+    response.status(200).send(products);
   } catch (error) {
     next(error);
   }
