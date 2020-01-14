@@ -45,37 +45,37 @@ db.sync({ force: true })
         name: "Home",
         description: "When it comes to home improvement, look no further than the home and garden pages of Marketplace. A wide range of home goods are just a mouse click away.",
         picture:
-          "https://images.pexels.com/photos/584399/living-room-couch-interior-room-584399.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          "https://images.pexels.com/photos/1648839/pexels-photo-1648839.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
       }),
       Category.create({
         name: "Electronics",
         description: "Keep up with the latest in electronics and technology and save money with great deals. Shop with confidence and find the electronics you want for a great price on Marketplace.",
         picture:
-          "https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          "https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
       }),
       Category.create({
         name: "Plants and Gardening",
         description: "Plants are a great way to make your house a better space to live in. You’ll find everything you need in and around your home to make it uniquely your own.",
         picture:
-          "https://images.pexels.com/photos/1600130/pexels-photo-1600130.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          "https://images.pexels.com/photos/1382394/pexels-photo-1382394.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
       }),
       Category.create({
         name: "Fashion",
         description: "Take the strain out of shopping with Marketplace. Find great deals on fashionable jeans, sweaters, suits and that look sharp and stylish.",
         picture:
-          "https://images.pexels.com/photos/794064/pexels-photo-794064.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          "https://images.pexels.com/photos/1936848/pexels-photo-1936848.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
       }),
       Category.create({
         name: "Sporting Goods",
         description: "Are you ready to play like a pro? No matter what your favorite sport is, Marketplace has the equipment you need to perform at your peak.",
         picture:
-          "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          "https://images.pexels.com/photos/3076509/pexels-photo-3076509.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
       }),
       Category.create({
-        name: "Movies, music and games",
+        name: "Movies, music and books",
         description: "Turn your home into a theater-like experience with a new or refurbished TV by Samsung, LG, or Sharp. Or up your game with a new or refurbished video game console like the PS4 or Xbox One.",
         picture:
-          "https://images.pexels.com/photos/1040160/pexels-photo-1040160.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+          "https://images.pexels.com/photos/2883049/pexels-photo-2883049.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
       }),
       // PRODUCTS
       Products.create({
