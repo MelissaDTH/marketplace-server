@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const Comments = require("./model");
 const Products = require("../products/model");
+const Users = require("../users/model")
 const authentication = require("../authentication/middleware");
 
 const router = new Router();
@@ -42,7 +43,7 @@ router.get(
       const comments = await Comments.findAll({
         where: { productId: request.params.productId },
         order: [["id", "DESC"]],
-        include: [Products]
+        include: [Users]
       });
       response.status(200).send(comments);
     } catch (error) {
