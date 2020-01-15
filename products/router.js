@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const Products = require("./model");
+const Users = require("../users/model")
 // const authentication = require("../authentication/middleware");
 // const Categories = require("../categories/model");
 const Comments = require("../comments/model");
@@ -100,7 +101,7 @@ router.get("/products/:productId", async (request, response, next) => {
   try {
     const product = await Products.findOne({
       where: { id: request.params.productId },
-      include: [Comments]
+      include: [Comments, Users]
     });
     response.send(product);
   } catch (error) {
