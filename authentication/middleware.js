@@ -6,12 +6,12 @@ function auth(req, res, next) {
   if (auth && auth[0] === 'Bearer' && auth[1]) {
     try {
       const data = toData(auth[1])
-      Users // can now use userId in /tickets path to create userId in db
+      Users
         .findByPk(data.userId)
         .then(user => {
           if (!user) return next('User does not exist')
 
-          req.user = user // a new user key is made
+          req.user = user
           next()
         })
         .catch(next)

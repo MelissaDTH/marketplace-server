@@ -1,10 +1,10 @@
 const { Router } = require("express");
 const Products = require("./model");
-const Users = require("../users/model")
-// const authentication = require("../authentication/middleware");
-// const Categories = require("../categories/model");
+const Users = require("../users/model");
+const authentication = require("../authentication/middleware");
+const Categories = require("../categories/model");
 const Comments = require("../comments/model");
-const Sequelize = require("sequelize");
+const { toData } = require("../authentication/jwt");
 
 const router = new Router();
 
@@ -50,7 +50,7 @@ router.get(
       const products = await Products.findAll({
         where: { categoryId: request.params.categoryId },
         order: [["id", "DESC"]],
-        include: [Comments, Users],
+        include: [Comments, Users, Categories]
       });
       // products.dataValues.risk = await calculateProductRisk(products)
       response.status(200).send(products);
@@ -71,5 +71,31 @@ router.get("/products/:productId", async (request, response, next) => {
     next(error);
   }
 });
+
+router.post(
+  "/category/:categoryId/products/",
+  authentication,
+  async (request, response, next) => {
+    try {
+      const { name, picture, price, color, description } = request.body;
+      const { categoryId } = request.params;
+      const userId = request.user.id;
+
+      const newProduct = await Products.create({
+        name,
+        picture,
+        price,
+        picture,
+        color,
+        description,
+        userId,
+        categoryId
+      });
+      response.send(newProduct);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 module.exports = router;
