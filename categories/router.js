@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const Categories = require("./model");
-// const authentication = require("../authentication/middleware");
 const Products = require("../products/model");
 
 const router = new Router();
@@ -20,7 +19,7 @@ router.post("/category", (request, response, next) => {
 });
 
 router.get("/category/:categoryId", (request, response, next) => {
-  Categories.findByPk({ order: [["id", "ASC"]] }, request.params.id, {
+  Categories.findByPk(request.params.categoryId, { order: [["id", "ASC"]] }, {
     include: [Products]
   })
     .then(category => {

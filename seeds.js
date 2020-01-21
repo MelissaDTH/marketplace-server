@@ -293,8 +293,7 @@ db.sync({ force: true })
         comment: "I don't think this is yellow, more ocher color?",
         productId: 11,
         userId: 1,
-      }),
-
+      })
     ])
   )
   .then(() => console.log("--- Database is seeded ---"))
