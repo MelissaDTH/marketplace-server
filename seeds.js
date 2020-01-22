@@ -221,13 +221,18 @@ db.sync({ force: true })
         color: 'brown',
         userId: 7,
         categoryId: 6
-      }),
+      }), //
 
       // CREATE COMMENTS
       Comments.create({
         comment: "Why do I have to put a comment at a product I haven't bought? This is me talking about pillows.",
         productId: 1,
         userId: 1,
+      }),
+      Comments.create({
+        comment: "These aren't made of wool?!",
+        productId: 1,
+        userId: 7,
       }),
       Comments.create({
         comment: "These pillows look great, I am definitely interested in at least 3 x 3 of them! ",

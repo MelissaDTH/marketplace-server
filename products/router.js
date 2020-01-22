@@ -29,20 +29,28 @@ async function calculateProductRisk(product) {
     risk += 5;
   }
 
-  // minimum & maximum risk
-  if (risk <= 5) {
-    risk = 5;
-  }
-  if (risk > 95) {
-    risk = 95;
-  }
 
   // CREATEDAT STAMP -- BUSINESS HOURS
-  // product.createdAt.getHours()
+  const businesshours = product.createdAt.getHours()
+    if (businesshours >= 9 && businesshours <= 17) {
+      risk -= 10;
+    } else {
+      risk += 10;
+    }
+  console.log('-------- BUSINESS', businesshours);
+  
+    // minimum & maximum risk
+    if (risk <= 5) {
+      risk = 5;
+    }
+    if (risk > 95) {
+      risk = 95;
+    }
 
   return risk;
 }
 
+// GET ALL PRODUCTS
 router.get(
   "/category/:categoryId/products/",
   async (request, response, next) => {
@@ -52,7 +60,6 @@ router.get(
         order: [["id", "DESC"]],
         include: [Comments, Users, Categories]
       });
-      // products.dataValues.risk = await calculateProductRisk(products)
       response.status(200).send(products);
     } catch (error) {
       next(error);
@@ -60,18 +67,22 @@ router.get(
   }
 );
 
+// GET ONE PRODUCT
 router.get("/products/:productId", async (request, response, next) => {
   try {
     const product = await Products.findOne({
       where: { id: request.params.productId },
       include: [Comments, Users]
     });
+    product.dataValues.risk = await calculateProductRisk(product)
     response.send(product);
   } catch (error) {
     next(error);
   }
 });
 
+
+// POST A PRODUCT
 router.post(
   "/category/:categoryId/products/",
   authentication,
@@ -97,5 +108,34 @@ router.post(
     }
   }
 );
+
+router.put("/edit/products/:productId", async (request, response, next) => {
+  try {
+    const product = await Products.findByPk(request.params.productId); 
+    if (product) {
+      product.update(request.body);
+    } else {
+      response.status(404).end();
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/products/:productId", async (request, response, next) => {
+  try {
+    const product = await Products.findByPk(request.params.productId, {
+      include: [Comments]
+    }); 
+    if (product) {
+      await product.destroy();
+      response.status(204).end();
+    } else {
+      response.status(404).end();
+    }
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;
