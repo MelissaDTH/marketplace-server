@@ -13,7 +13,6 @@ async function calculateProductRisk(product) {
   let risk = 5;
 
   // NUMBER OF PRODUCTS OF SELLER
-  // Calculating function for amount of product(s) by author
   const allProductsFromAuthor = await Products.count({
     where: { userId: product.userId }
   });
@@ -26,27 +25,24 @@ async function calculateProductRisk(product) {
     where: { productId: product.id }
   });
   if (commentsOnProduct > 3) {
-    risk += 5;
+    risk += 10;
   }
 
+  // CREATED AT BUSINESS HOURS
+  const businesshours = product.createdAt.getHours();
+  if (businesshours >= 9 && businesshours <= 17) {
+    risk -= 10;
+  } else {
+    risk += 10;
+  }
 
-  // CREATEDAT STAMP -- BUSINESS HOURS
-  const businesshours = product.createdAt.getHours()
-    if (businesshours >= 9 && businesshours <= 17) {
-      risk -= 10;
-    } else {
-      risk += 10;
-    }
-  console.log('-------- BUSINESS', businesshours);
-  
-    // minimum & maximum risk
-    if (risk <= 5) {
-      risk = 5;
-    }
-    if (risk > 95) {
-      risk = 95;
-    }
-
+  // MINIMUM & MAXIMUM RISK
+  if (risk <= 5) {
+    risk = 5;
+  }
+  if (risk > 95) {
+    risk = 95;
+  }
   return risk;
 }
 
@@ -74,13 +70,12 @@ router.get("/products/:productId", async (request, response, next) => {
       where: { id: request.params.productId },
       include: [Comments, Users]
     });
-    product.dataValues.risk = await calculateProductRisk(product)
+    product.dataValues.risk = await calculateProductRisk(product);
     response.send(product);
   } catch (error) {
     next(error);
   }
 });
-
 
 // POST A PRODUCT
 router.post(
@@ -109,9 +104,10 @@ router.post(
   }
 );
 
+// EDIT A PRODUCT
 router.put("/edit/products/:productId", async (request, response, next) => {
   try {
-    const product = await Products.findByPk(request.params.productId); 
+    const product = await Products.findByPk(request.params.productId);
     if (product) {
       product.update(request.body);
     } else {
@@ -122,11 +118,12 @@ router.put("/edit/products/:productId", async (request, response, next) => {
   }
 });
 
+// DELETE PRODUCT
 router.delete("/products/:productId", async (request, response, next) => {
   try {
     const product = await Products.findByPk(request.params.productId, {
       include: [Comments]
-    }); 
+    });
     if (product) {
       await product.destroy();
       response.status(204).end();
