@@ -19,7 +19,8 @@ db.sync({ force: true })
       Comments.destroy({
         where: {}
       }),
-      // USER
+
+      // USERS
       Users.create({
         username: "BramRichards",
         password: "$2b$10$JZ5ItMKfLxlFbTUu9d.bA.Evar83Esj7gXXKcJ5RJhto9Epgt9bQe" //bram
@@ -38,8 +39,21 @@ db.sync({ force: true })
       }),
       Users.create({
         username: "ChristopherMiller",
-        password: "$2b$10$NSU6xf5Z3PyYW9lG4f6gAOx1jHuhi5KEt3gjygjgsxI1XE8r0aeaO" //c
+        password: "$2b$10$NSU6xf5Z3PyYW9lG4f6gAOx1jHuhi5KEt3gjygjgsxI1XE8r0aeaO" //c,
       }),
+      Users.create({
+        username: "Heroku747",
+        password: "$2b$10$JZ5ItMKfLxlFbTUu9d.bA.Evar83Esj7gXXKcJ5RJhto9Epgt9bQe" //bram
+      }),
+      Users.create({
+        username: "Crazy377",
+        password: "$2b$10$VtM.I0WO2LbDTbbAHvMavu6IL4AmoOyojXf6gjnjsSB3THQ8qYH2q" //mel
+      }),
+      Users.create({
+        username: "Beastie Boy",
+        password: "$2b$10$Eu2AyBWuFSf.uYH3nj4yfePj8e.rHfGYWHRbOa5EBJgkvbK4lPQG2" //am
+      }),
+
       // CATEGORIES
       Category.create({
         name: "Home",
@@ -79,7 +93,7 @@ db.sync({ force: true })
       }),
       // PRODUCTS
       Products.create({
-        name: "Three Pillows with Good Quality Wool",
+        name: "Three Pillows Good Quality Wool",
         picture:
           "https://images.pexels.com/photos/298842/pexels-photo-298842.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
           price: 35,
@@ -89,7 +103,7 @@ db.sync({ force: true })
         categoryId: 1
       }),
       Products.create({
-        name: "White Lamp with a Lamp Base",
+        name: "White Lamp with a White Base",
         picture:
           "https://images.pexels.com/photos/545048/pexels-photo-545048.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
           price: 54,
@@ -139,7 +153,7 @@ db.sync({ force: true })
         categoryId: 2
       }),
       Products.create({
-        name: "PS4 Dualshock Controllers",
+        name: "2 PS4 Dualshock Controllers",
         picture:
           "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
           price: 250,
@@ -149,17 +163,17 @@ db.sync({ force: true })
         categoryId: 2
       }),
       Products.create({
-        name: "Succulent Plant Trio for Indoor",
+        name: "Succulent Indoor Plant",
         picture:
-          "https://images.pexels.com/photos/796620/pexels-photo-796620.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          "https://images.pexels.com/photos/1284879/pexels-photo-1284879.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
           price: 15,
-        description: "These indoor succulents come with three plants, without any pots. They are only suitable for indoor life.",
+        description: "These indoor succulents come with three plants, without any pots. They are only suitable for indoor life, but make up for this in cuteness.",
         color: 'green',
         userId: 5,
         categoryId: 3
       }),
       Products.create({
-        name: "Orange 25 cm Indoor Plant Pot",
+        name: "Orange 25 cm Indoor Pot",
         picture:
           "https://images.pexels.com/photos/793012/pexels-photo-793012.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
           price: 10,
@@ -167,8 +181,119 @@ db.sync({ force: true })
         color: 'orange',
         userId: 4,
         categoryId: 3
-      })
+      }),
+      Products.create({
+        name: "Blue Denim Jeans",
+        picture:
+          "https://images.pexels.com/photos/2244951/pexels-photo-2244951.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          price: 95,
+        description: "These blue denim jeans come in different sizes and different colors. Check our website for more information and to see all the available jeans on offer and sale.",
+        color: 'blue',
+        userId: 8,
+        categoryId: 4
+      }),
+      Products.create({
+        name: "Yellow Vans Sneakers",
+        picture:
+          "https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          price: 215,
+        description: "These are limited edition Vans Sneakers, from line #359. They have never been on my feet, only took them out of the box for the photo. I got 30 pair of them (bought the whole line all in once), so I can offer them pretty cheap if you ask me.",
+        color: 'yellow',
+        userId: 7,
+        categoryId: 4
+      }),
+      Products.create({
+        name: "Longboard Used Two Times",
+        picture:
+          "https://images.pexels.com/photos/1018483/pexels-photo-1018483.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          price: 105,
+        description: "This longboard was a bad Christmas gift, I have used it for two times now and it's really not my thing. Hopefully I can make someone else very happy with this.",
+        color: 'red, black and grey',
+        userId: 6,
+        categoryId: 5
+      }),
+      Products.create({
+        name: "Lea Este Libro Book",
+        picture:
+          "https://images.pexels.com/photos/2148215/pexels-photo-2148215.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          price: 15,
+        description: "This Lea Este Libro Si Desea Tomar Buenas Fotografias Book is great. Keep it in your book case and never read it, or read it een though you don't know the language. Possibilities are endless.",
+        color: 'brown',
+        userId: 7,
+        categoryId: 6
+      }),
 
+      // CREATE COMMENTS
+      Comments.create({
+        comment: "Why do I have to put a comment at a product I haven't bought? This is me talking about pillows.",
+        productId: 1,
+        userId: 1,
+      }),
+      Comments.create({
+        comment: "These pillows look great, I am definitely interested in at least 3 x 3 of them! ",
+        productId: 1,
+        userId: 3,
+      }),
+      Comments.create({
+        comment: "I am very interested in this lamp, will you be able to take some off the price because I am going on holidays.",
+        productId: 2,
+        userId: 5,
+      }),
+      Comments.create({
+        comment: "These pillows will look great on my red couch, I am definitely going to buy them from you.",
+        productId: 1,
+        userId: 2,
+      }),
+      Comments.create({
+        comment: "I think programming is great, especially on an iMac from 2019. I am going to buy this!",
+        productId: 5,
+        userId: 3,
+      }),
+      Comments.create({
+        comment: "It will take a while before the PS5 has enough games to be fun, so I'll stick to my PS4 for now and buy new controllers.",
+        productId: 7,
+        userId: 5,
+      }),
+      Comments.create({
+        comment: "This VR thingy looks great, I think I need it",
+        productId: 4,
+        userId: 1,
+      }),
+      Comments.create({
+        comment: "Going back in time with a PSP, that's awesome. I want it!",
+        productId: 6,
+        userId: 3,
+      }),
+      Comments.create({
+        comment: "This is one of the best devices ever, I am buying one.",
+        productId: 6,
+        userId: 7,
+      }),
+      Comments.create({
+        comment: "I would love to have an unused iPhone for this price, sold!",
+        productId: 3,
+        userId: 6,
+      }),
+      Comments.create({
+        comment: "Ah, cute! This pot has to be in my collection.",
+        productId: 9,
+        userId: 8,
+      }),
+      Comments.create({
+        comment: "This succulent looks great, it will brighten up my house. I'm putting it in my cart as I type.",
+        productId: 8,
+        userId: 7,
+      }),
+      Comments.create({
+        comment: "It looks like it is used more than just two times, buddy!",
+        productId: 12,
+        userId: 3,
+      }),
+      Comments.create({
+        comment: "I don't think this is yellow, more ocher color?",
+        productId: 11,
+        userId: 1,
+      })
     ])
   )
   .then(() => console.log("--- Database is seeded ---"))
