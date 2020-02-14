@@ -91,6 +91,7 @@ db.sync({ force: true })
         picture:
           "https://images.pexels.com/photos/2883049/pexels-photo-2883049.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
       }),
+      
       // PRODUCTS
       Products.create({
         name: "Three Pillows Good Quality Wool",
@@ -108,6 +109,16 @@ db.sync({ force: true })
           "https://images.pexels.com/photos/545048/pexels-photo-545048.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
           price: 54,
         description: "A white lamp that has to go because we have bought new black lamps. This does not fit our interior anymore, they are almost new and have been use scarcely.",
+        color: 'white',
+        userId: 2,
+        categoryId: 1
+      }),
+      Products.create({
+        name: "New White Kitchen",
+        picture:
+          "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          price: 3575,
+        description: "A white kitchen that does not match our interior anymore. The dining area is also included, but our style has changed to the color orange now. It's an entirely new kitchen, has been used for 3 years.",
         color: 'white',
         userId: 2,
         categoryId: 1
@@ -225,9 +236,19 @@ db.sync({ force: true })
 
       // CREATE COMMENTS
       Comments.create({
-        comment: "Why do I have to put a comment at a product I haven't bought? This is me talking about pillows.",
+        comment: "These look too good to be true",
         productId: 1,
         userId: 1,
+      }),
+      Comments.create({
+        comment: "These aren't made of wool?!",
+        productId: 1,
+        userId: 7,
+      }),
+      Comments.create({
+        comment: "Can I see your receipt?",
+        productId: 1,
+        userId: 8,
       }),
       Comments.create({
         comment: "These pillows look great, I am definitely interested in at least 3 x 3 of them! ",
@@ -246,27 +267,27 @@ db.sync({ force: true })
       }),
       Comments.create({
         comment: "I think programming is great, especially on an iMac from 2019. I am going to buy this!",
-        productId: 5,
+        productId: 6,
         userId: 3,
       }),
       Comments.create({
         comment: "It will take a while before the PS5 has enough games to be fun, so I'll stick to my PS4 for now and buy new controllers.",
-        productId: 7,
+        productId: 8,
         userId: 5,
       }),
       Comments.create({
         comment: "This VR thingy looks great, I think I need it",
-        productId: 4,
+        productId: 5,
         userId: 1,
       }),
       Comments.create({
         comment: "Going back in time with a PSP, that's awesome. I want it!",
-        productId: 6,
+        productId: 7,
         userId: 3,
       }),
       Comments.create({
         comment: "This is one of the best devices ever, I am buying one.",
-        productId: 6,
+        productId: 7,
         userId: 7,
       }),
       Comments.create({
@@ -276,24 +297,30 @@ db.sync({ force: true })
       }),
       Comments.create({
         comment: "Ah, cute! This pot has to be in my collection.",
-        productId: 9,
+        productId: 10,
         userId: 8,
       }),
       Comments.create({
         comment: "This succulent looks great, it will brighten up my house. I'm putting it in my cart as I type.",
-        productId: 8,
+        productId: 9,
         userId: 7,
       }),
       Comments.create({
         comment: "It looks like it is used more than just two times, buddy!",
-        productId: 12,
+        productId: 13,
         userId: 3,
       }),
       Comments.create({
         comment: "I don't think this is yellow, more ocher color?",
-        productId: 11,
+        productId: 12,
+        userId: 1,
+      }),
+      Comments.create({
+        comment: "This Lea Este Libro Si Desea Tomar Buenas Fotografias Book looks used...",
+        productId: 14,
         userId: 1,
       })
+
     ])
   )
   .then(() => console.log("--- Database is seeded ---"))
