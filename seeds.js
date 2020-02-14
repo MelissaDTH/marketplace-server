@@ -91,6 +91,7 @@ db.sync({ force: true })
         picture:
           "https://images.pexels.com/photos/2883049/pexels-photo-2883049.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
       }),
+      
       // PRODUCTS
       Products.create({
         name: "Three Pillows Good Quality Wool",
