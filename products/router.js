@@ -35,7 +35,7 @@ async function calculateProductRisk(product) {
     risk += 10;
   }
 
-  // minimum & maximum risk
+  // MINIMUM & MAXIMUM RISK
   if (risk <= 5) {
     risk = 10;
   }
@@ -49,6 +49,7 @@ async function calculateProductRisk(product) {
   return risk;
 }
 
+// GET ALL PRODUCTS
 router.get(
   "/category/:categoryId/products/",
   async (request, response, next) => {
@@ -65,6 +66,7 @@ router.get(
   }
 );
 
+// GET ONE PRODUCT
 router.get("/products/:productId", async (request, response, next) => {
   try {
     const product = await Products.findOne({
@@ -80,6 +82,7 @@ router.get("/products/:productId", async (request, response, next) => {
   }
 });
 
+// POST A PRODUCT
 router.post(
   "/category/:categoryId/products/",
   authentication,
@@ -105,5 +108,36 @@ router.post(
     }
   }
 );
+
+// EDIT A PRODUCT
+router.put("/edit/products/:productId", async (request, response, next) => {
+  try {
+    const product = await Products.findByPk(request.params.productId);
+    if (product) {
+      product.update(request.body);
+    } else {
+      response.status(404).end();
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+// DELETE PRODUCT
+router.delete("/products/:productId", async (request, response, next) => {
+  try {
+    const product = await Products.findByPk(request.params.productId, {
+      include: [Comments],
+    });
+    if (product) {
+      await product.destroy();
+      response.status(204).end();
+    } else {
+      response.status(404).end();
+    }
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;

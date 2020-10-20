@@ -49,4 +49,24 @@ router.get(
   }
 );
 
+// router.post("/comments", authentication, async (request, response, next) => {
+//   try {
+//     const userId = toData(request.body.jwt).userId;
+
+//     const comment = {
+//       content: request.body.content,
+//       ticketId: request.body.ticketId,
+//       userId: userId
+//     };
+
+//     const author = await User.findByPk(userId);
+
+//     const newComment = await Comment.create(comment);
+//     console.log("AUTHOR TEST", author);
+//     response.send({ comment: newComment, author: author.dataValues.username });
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
 module.exports = router;
